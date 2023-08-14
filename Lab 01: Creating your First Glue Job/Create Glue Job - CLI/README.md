@@ -74,6 +74,10 @@ Now that we have the source code file for the Glue job, follow the instructions 
     ```bash
     cd ~/environment
 
+    $(curl -s https://raw.githubusercontent.com/MazenAB/Glue-immersion-day-MWAA/main/green_tripdata.csv --output ~/environment/green_tripdata.csv --create-dirs)
+
+    aws s3 cp green_tripdata.csv s3://${BUCKET_NAME}/data/raw/step-green/
+
     aws s3 cp ny-taxi-transformed-cli-jb.py s3://${BUCKET_NAME}/trainingday-scripts/ny-taxi-transformed-cli-jb.py
 
     aws glue create-job \
